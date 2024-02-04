@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjs@12.3.1/mathjs/lib/browser/math.js"></script>
+
+
     <script type="text/javascript">
+        var math = window.math;
         function showLog(msg) {
             var ul = document.getElementById('log')
             var li = document.createElement("li")
@@ -19,7 +23,7 @@
             if(expression) {
                 try {
                     answer = eval(expression);
-            document.getElementById("expression").value = answer;
+                    document.getElementById("expression").value = answer;
                     showLog(expression + "=" + answer)
                     
                 } catch (e) {
@@ -27,6 +31,36 @@
                     showLog(expression + " is a bad expression. Retry!")
                 }
             }
+        }
+
+        function math_calculate() {
+            expression = document.getElementById("expression").value;
+            console.log("hi");
+            // console.log(expression);
+            if(expression) {
+                try {
+                    answer = math.evaluate(expression);
+                    console.log(answer)
+                    document.getElementById("expression").value = answer;
+                    showLog(expression + "=" + answer)
+                    
+                } catch (e) {
+                    // console.log("bad expression")
+                    showLog(expression + " is a bad expression. Retry!")
+                }
+            }
+        }
+
+        function input_number(v) {
+            expression = document.getElementById("expression").value;
+            expression = expression + v;
+            document.getElementById('expression').value = expression;
+        }
+
+        function input_op(o) {
+            expression = document.getElementById("expression").value;
+            expression = expression + o;
+            document.getElementById('expression').value = expression;
         }
 
         function init_app(){
@@ -45,7 +79,71 @@
         </div>
         <div class="col">
         <input type="input" class="form-container" id="expression" placeholder="3*5">
-        <button id="calculate" class="btn btn-primary" onclick="calculate()">Calculate</button>
+    </div>
+        <div class="col">
+        
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+        
+        </div>
+        <div class="col">
+        <button class="btn btn-primary" onclick="input_number('7')">7</button>
+        <button  class="btn btn-primary" onclick="input_number('8')">8</button>
+        <button class="btn btn-primary" onclick="input_number('9')">9</button>
+        <button class="btn btn-warning" onclick="input_op('/')">/</button>
+    </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+            
+            </div>
+            <div class="col">
+            <button class="btn btn-primary">4</button>
+            <button  class="btn btn-primary">5</button>
+            <button class="btn btn-primary">6</button>
+            <button class="btn btn-warning" onclick="input_op('*')">*</button>
+        </div>
+            </div>
+
+            
+            <div class="row">
+                <div class="col">
+                
+                </div>
+                <div class="col">
+                <button class="btn btn-primary">3</button>
+                <button  class="btn btn-primary">2</button>
+                <button class="btn btn-primary">1</button>
+                <button class="btn btn-warning" onclick="input_op('-')">-</button>
+            </div>
+                </div>
+        
+
+    <div class="row">
+        <div class="col">
+        
+        </div>
+        <div class="col">
+        <button class="btn btn-primary">0</button>
+        <button  class="btn btn-primary">.</button>
+        <button class="btn btn-success" id="calculate">=</button>
+        <button class="btn btn-warning" onclick="input_op('+')">+</button>
+    </div>
+        </div>
+
+    
+    </div>
+
+    <div class="row">
+        <div class="col">
+        
+        </div>
+        <div class="col">
+        
     </div>
         <h4>Log</h4>
         <ul id="log">
@@ -54,7 +152,6 @@
         <div class="col">
         
         </div>
-    </div>
     </div>
 </body>
 <script>init_app()</script>
