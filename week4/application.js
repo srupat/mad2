@@ -1,4 +1,5 @@
 Vue.component('message-board', {
+    props:["title"],
     data: function() {
         return { 
             visitor_name:"",
@@ -9,6 +10,7 @@ Vue.component('message-board', {
     template: 
     `
     <div>
+    <h4> {{title}} </h4>
     <p>Your name : <input type="text" v-model="visitor_name"></p>
     Your message : <input type="text" v-model="visitor_message">
     <button v-on:click="sayHi" >Say HI</button>
@@ -24,6 +26,7 @@ Vue.component('message-board', {
             this.messages.push({ "visitor_name" : this.visitor_name, "visitor_message":this.visitor_message});
             this.visitor_name = ""
             this.visitor_message = ''
+            this.$emit("add-to-global-count")
         }
     }, 
     computed:{
@@ -35,5 +38,13 @@ Vue.component('message-board', {
 })
 
 var app = new Vue({
-    el: "#app"    
+    el: "#app",
+    data : {
+        global_count : 0
+    },
+    methods:{
+        add_count: function(){
+            this.global_count = this.global_count + 1;
+        }
+    }    
 });

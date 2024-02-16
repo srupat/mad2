@@ -9,11 +9,21 @@
 </head>
 <body>
     <div id="app">
+        <h2>The total number of messages passed {{ global_count }}</h2>
         <table>
             <tr>
-                <td><message-board></message-board></td>
-                <td><message-board></message-board></td>
-                <td><message-board></message-board></td>
+                <td>
+                    
+                    <message-board title="Raj's board" v-on:add-to-global-count = "add_count"></message-board>
+                </td>
+                <td>
+                    
+                    <message-board title="Manoj's board" v-on:add-to-global-count = "add_count"></message-board>
+                </td>
+                <td>
+                    
+                    <message-board title="Thej's board"  v-on:add-to-global-count = "add_count"></message-board>
+                </td>
             </tr>
         </table>
     </div>
