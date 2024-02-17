@@ -6,16 +6,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
     <title>SecureYou</title>
+    <style>
+    </style>
 </head>
 <body>
     <div id="app">
-    <input type="text" id="pass-input" placeholder="Enter password">
-    <!-- <div v-model="message"> -->
-    <button class="btn" v-bind:class="{btn-success:isOklower} v-model="message" >Atleast one lowercase char</button>
-    <button class="btn" v-bind:class="isOKupper">Atleast one uppercase char</button>
-    <button class="btn" v-bind:class="isOKnum">Atleast one number</button>
-    <button class="btn" v-bind:class="isOKspecial">Atleast special character</button>
-    <!-- </div> -->
+        <div>Your password : {{ password }}</div><br>
+    <input type="text" id="pass-input" placeholder="Enter password" v-model="password" /><br><br>
+    <button class="btn btn-primary" v-bind:class="lower()">lowercase</button><br><br>
+    <button class="btn btn-primary" v-bind:class="upper()">uppercase</button><br><br>
+    <button class="btn btn-primary" v-bind:class="num()">number</button><br><br>
+    <button class="btn btn-primary" v-bind:class="special()">special character</button><br>
+    
     </div>
 </body>
 <script src="secure.js"></script>
