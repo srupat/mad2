@@ -6,3 +6,4 @@ application/config.py
 migrations
 db_directory
 __pycache__
+static/vue/vue.min.js
