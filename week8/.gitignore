@@ -1,0 +1,8 @@
+venv
+env
+/venv
+
+application/config.py
+migrations
+db_directory
+__pycache__
