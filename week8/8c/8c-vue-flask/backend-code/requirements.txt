@@ -1,0 +1,8 @@
+Flask
+Flask-SQLAlchemy==3.0.2
+flask-security-too
+email_validator
+bcrypt
+flask_restful
+flask-cors
+Werkzeug==2.2.2
