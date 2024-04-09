@@ -4,3 +4,6 @@
 The major tools that have been used uptil now are :
 - Javascript
 - Vue.js
+- Vuex
+- Celery
+- Redis
