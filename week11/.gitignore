@@ -1,0 +1,4 @@
+env
+static/bootstrap
+application/config.py
+__pycache__
